@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
 app.get('/cb_divisions', function (req, res) {
 
 	new sql.ConnectionPool(sqlConfig).connect().then(pool => {
-	  return pool.request().query("select DivisionMnemonic ,DivisionName from dbo.uvw_json_cb_divisions order by DivisionMnemonic")
+	  return pool.request().query("select * from dbo.states order by StateAbbreviation")
 	  }).then(result => {
 		let rows = result.recordset
 		res.setHeader('Access-Control-Allow-Origin', '*')
